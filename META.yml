@@ -1,0 +1,25 @@
+---
+abstract: 'A generic Redis-backed NaiveBayes implementation'
+author:
+  - 'Caio Romão <cpan@caioromao.com>'
+build_requires: {}
+configure_requires:
+  ExtUtils::MakeMaker: 6.30
+dynamic_config: 0
+generated_by: 'Dist::Zilla version 4.300037, CPAN::Meta::Converter version 2.132510'
+license: mit
+meta-spec:
+  url: http://module-build.sourceforge.net/META-spec-v1.4.html
+  version: 1.4
+name: Redis-NaiveBayes
+no_index:
+  directory:
+    - t
+provides:
+  Redis::NaiveBayes:
+    file: lib/Redis/NaiveBayes.pm
+    version: v0.0.1
+requires:
+  Redis: 0
+  perl: 5.008
+version: 0.0.1
