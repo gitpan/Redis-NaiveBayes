@@ -43,10 +43,10 @@
    "provides" : {
       "Redis::NaiveBayes" : {
          "file" : "lib/Redis/NaiveBayes.pm",
-         "version" : "v0.0.1"
+         "version" : "v0.0.2"
       }
    },
    "release_status" : "stable",
-   "version" : "0.0.1"
+   "version" : "0.0.2"
 }
 

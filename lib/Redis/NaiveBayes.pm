@@ -1,6 +1,6 @@
 package Redis::NaiveBayes;
 {
-  $Redis::NaiveBayes::VERSION = '0.0.1';
+  $Redis::NaiveBayes::VERSION = '0.0.2';
 }
 # ABSTRACT: A generic Redis-backed NaiveBayes implementation
 
@@ -12,7 +12,6 @@ use List::Util qw(sum reduce);
 use Redis;
 
 use constant {
-    DEBUG => 0,
     LABELS => 'labels',
 };
 
@@ -142,11 +141,9 @@ my $LUA_SCORES = q{
     -- this is so fucking retarded. I now regret this luascript branch idea
     local return_crap = {};
     local index = 1
-    for _, label in ipairs(KEYS) do
-        if scores[label] then
-            return_crap[index] = label
-            return_crap[index+1] = scores[label]
-        end
+    for key, value in pairs(scores) do
+        return_crap[index] = key
+        return_crap[index+1] = value
         index = index + 2
     end
 
@@ -182,13 +179,7 @@ sub _load_scripts {
 sub _exec {
     my ($self, $command, $key, @rest) = @_;
 
-    DEBUG and $self->_debug("Will execute command '%s' on '%s'", ($command, $self->{namespace} . $key));
     return $self->{redis}->$command($self->{namespace} . $key, @rest);
-}
-
-sub _debug {
-    my $self = shift;
-    printf STDERR @_;
 }
 
 sub _run_script {
@@ -297,7 +288,7 @@ Redis::NaiveBayes - A generic Redis-backed NaiveBayes implementation
 
 =head1 VERSION
 
-version 0.0.1
+version 0.0.2
 
 =head1 SYNOPSIS
 
@@ -387,7 +378,17 @@ Returns a HASHREF with the scores for each of the labels known by the model
 
 This module is heavilly inspired by the Python implementation
 available at https://github.com/jart/redisbayes - the main
-difference, besides the obvious
+difference, besides the obvious language choice, is that
+Redis::NaiveBayes focuses on being generic and minimizing
+the number of roundtrips to Redis.
+
+=head1 TODO
+
+=over
+
+=item Add support for additive smoothing
+
+=back
 
 =head1 SEE ALSO
 

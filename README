@@ -2,7 +2,7 @@ NAME
     Redis::NaiveBayes - A generic Redis-backed NaiveBayes implementation
 
 VERSION
-    version 0.0.1
+    version 0.0.2
 
 SYNOPSIS
         my $tokenizer = sub {
@@ -82,7 +82,11 @@ METHODS
 NOTES
     This module is heavilly inspired by the Python implementation available
     at https://github.com/jart/redisbayes - the main difference, besides the
-    obvious
+    obvious language choice, is that Redis::NaiveBayes focuses on being
+    generic and minimizing the number of roundtrips to Redis.
+
+TODO
+    Add support for additive smoothing
 
 SEE ALSO
     Redis, Redis::Bayes, Algorithm::NaiveBayes
