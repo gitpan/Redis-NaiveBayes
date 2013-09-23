@@ -23,7 +23,7 @@ my %WriteMakefileArgs = (
     "Redis" => 0
   },
   "TEST_REQUIRES" => {},
-  "VERSION" => "0.0.2",
+  "VERSION" => "0.0.3",
   "test" => {
     "TESTS" => "t/*.t"
   }
