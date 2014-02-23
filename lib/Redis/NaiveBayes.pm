@@ -1,9 +1,6 @@
 package Redis::NaiveBayes;
-{
-  $Redis::NaiveBayes::VERSION = '0.0.3';
-}
 # ABSTRACT: A generic Redis-backed NaiveBayes implementation
-
+$Redis::NaiveBayes::VERSION = '0.0.4';
 
 use strict;
 use warnings;
@@ -312,13 +309,15 @@ __END__
 
 =pod
 
+=encoding UTF-8
+
 =head1 NAME
 
 Redis::NaiveBayes - A generic Redis-backed NaiveBayes implementation
 
 =head1 VERSION
 
-version 0.0.3
+version 0.0.4
 
 =head1 SYNOPSIS
 
@@ -424,11 +423,19 @@ the number of roundtrips to Redis.
 
 L<Redis>, L<Redis::Bayes>, L<Algorithm::NaiveBayes>
 
-=encoding utf8
+=head1 AUTHORS
 
-=head1 AUTHOR
+=over 4
+
+=item *
 
 Caio Romão <cpan@caioromao.com>
+
+=item *
+
+Stanislaw Pusep <stas@sysd.org>
+
+=back
 
 =head1 COPYRIGHT AND LICENSE
 
